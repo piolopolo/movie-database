@@ -5,12 +5,14 @@ import { Container, Typography, Card, CardContent, CardMedia, Button, Grid } fro
 import Header from '../../components/Header';
 import { useStore } from '../../store/favoritesStore';
 import Link from 'next/link';
+import { Movie } from '@/domain/entities/Movie';
+
 
 export default function MovieDetailPage() {
   const router = useRouter();
   const { id } = router.query;
-  const [movie, setMovie] = useState(null);
-  const [recommendations, setRecommendations] = useState([]);
+  const [movie, setMovie] = useState<Movie | null>(null); // State untuk menyimpan detail film
+  const [recommendations, setRecommendations] = useState<Movie[]>([]);
 
   const {
     favourites,

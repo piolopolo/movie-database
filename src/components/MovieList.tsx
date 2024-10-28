@@ -1,13 +1,21 @@
 import { Grid, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import React from 'react';
+import { Movie } from '@/domain/entities/Movie';
 
-export default function MovieList({ movies, onMovieClick }) {
+interface MovieListProps {
+  movies: Movie[]; 
+  onMovieClick: (id: number) => void; 
+}
+
+
+const MovieList: React.FC<MovieListProps> = ({ movies, onMovieClick }) => {
   return (
     <Grid container spacing={4} sx={{ marginTop: '20px' }}>
       {movies.map((movie) => (
         <Grid item key={movie.id} xs={12} sm={6} md={4}>
           <Card
             sx={{ cursor: 'pointer' }}
-            onClick={() => onMovieClick(movie.id)} 
+            onClick={() => onMovieClick(movie.id)}
           >
             <CardMedia
               component="img"
@@ -26,4 +34,6 @@ export default function MovieList({ movies, onMovieClick }) {
       ))}
     </Grid>
   );
-}
+};
+
+export default MovieList;

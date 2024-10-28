@@ -4,9 +4,12 @@ import { MovieApiRepository } from '../infrastructure/repositories/MovieApiRepos
 import MovieList from '../components/MovieList';
 import { Container, Pagination, TextField, Button } from '@mui/material';
 import Header from '../components/Header';
+import { Movie } from '../domain/entities/Movie';
+
+
 
 export default function HomePage() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState(1);
   const [inputPage, setInputPage] = useState(''); 
   const router = useRouter();
@@ -23,7 +26,7 @@ export default function HomePage() {
   const handlePageInputSubmit = () => {
     const pageNumber = parseInt(inputPage, 10);
     if (!isNaN(pageNumber) && pageNumber > 0 && pageNumber <= 10) { 
-      setPage(pageNumber); e
+      setPage(pageNumber); 
       setInputPage('');
     } else {
       alert('Please enter a valid page number between 1 and 10');
