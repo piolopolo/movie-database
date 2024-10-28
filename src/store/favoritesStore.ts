@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 
-
 interface Movie {
   id: number;
   title: string;
